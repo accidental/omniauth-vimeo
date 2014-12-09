@@ -12,10 +12,7 @@ module OmniAuth
         :site => "https://api.vimeo.com"
       }
 
-      def request_phase
-        options[:authorize_params] = {:scope => options[:scope]} if options[:scope]
-        super
-      end
+      
     end
   end
 end
