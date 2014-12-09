@@ -3,14 +3,13 @@ require 'multi_json'
 
 module OmniAuth
   module Strategies
-    class Vimeo < OmniAuth::Strategies::OAuth
+    class Vimeo < OmniAuth::Strategies::OAuth2
       option :name, 'vimeo'
 
       option :client_options, {
-        :access_token_path => "/oauth/access_token",
-        :authorize_path => "/oauth/authorize",
-        :request_token_path => "/oauth/request_token",
-        :site => "https://vimeo.com"
+        :token_url => "/oauth/access_token",
+        :authorize_url => "/oauth/authorize",
+        :site => "https://api.vimeo.com"
       }
 
       uid { user_info['id'] }
