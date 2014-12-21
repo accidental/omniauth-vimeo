@@ -1,5 +1,7 @@
 # OmniAuth Vimeo
 
+Updated to work with current Vimeo API (v 3.2).
+
 This is an OmniAuth strategy for authenticating to Vimeo. To
 use it, you'll need to sign up for an OAuth Application ID and Secret
 on the [Vimeo Applications Page](https://developer.vimeo.com/apps).
