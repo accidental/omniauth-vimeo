@@ -5,10 +5,10 @@ require "omniauth-vimeo/version"
 Gem::Specification.new do |gem|
   gem.name        = "omniauth-vimeo"
   gem.version     = Omniauth::Vimeo::VERSION
-  gem.authors     = ["Benjamin Fritsch"]
-  gem.email       = ["beanie@benle.de"]
-  gem.homepage    = "https://github.com/beanieboi/omniauth-vimeo"
-  gem.description = %q{OmniAuth strategy for Vimeo}
+  gem.authors     = ["Peter Gerard"]
+  gem.email       = []
+  gem.homepage    = "https://github.com/accidental/omniauth-vimeo"
+  gem.description = %q{OmniAuth strategy for Vimeo API 3.2}
   gem.summary     = gem.description
   gem.licenses    = [ 'MIT' ]
 
@@ -17,8 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency 'multi_json', '~> 1.10'
-  gem.add_dependency 'omniauth-oauth', '~> 1.0'
+  gem.add_dependency 'omniauth-oauth2', '~> 1.2'
 
   gem.add_development_dependency "rspec", "~> 3.0"
   gem.add_development_dependency 'rake'

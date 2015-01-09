@@ -1,42 +1,38 @@
 # OmniAuth Vimeo
 
-Updated to work with current Vimeo API (v 3.2).
+Completely rewritten to work with current Vimeo API (v 3.2).
 
-This is an OmniAuth strategy for authenticating to Vimeo. To
-use it, you'll need to sign up for an OAuth Application ID and Secret
+This is an OmniAuth strategy for authenticating to Vimeo using OAuth2 to work with Vimeo's current API. To
+use it, you'll need to sign up for an OAuth2 Application ID and Secret
 on the [Vimeo Applications Page](https://developer.vimeo.com/apps).
-You can read more about Vimdeo's oauth over at their [developer page](https://developer.vimeo.com/apis/advanced#oauth)
+You can read more about Vimdeo's OAuth2 at the [developer page](https://developer.vimeo.com/api/authentication)
 
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'omniauth-vimeo'
+    gem 'omniauth-vimeo', github: "accidental/omniauth-vimeo"
 
 And then execute:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install omniauth-vimeo
+    $ bundle install
 
 ## Usage
 
 If omniauth-vimeo is ready to go, you need to add the following lines to your `config/initializers/omniauth.rb`:
 
-    use OmniAuth::Builder do
-        provider :vimeo, ENV['VIMEO_KEY'], ENV['VIMEO_SECRET']
+    Rails.application.config.middleware.use OmniAuth::Builder do
+        provider :vimeo, VIMEO_KEY, VIMEO_SECRET
     end
 
-If you need write permission use the following lines:
+If you need other permissions use the following lines (omitting permissions you don't need):
 
-    use OmniAuth::Builder do
-        provider :vimeo, ENV['VIMEO_KEY'], ENV['VIMEO_SECRET'], authorize_params: {permission: "write"}
+    Rails.application.config.middleware.use OmniAuth::Builder do
+        provider :vimeo, VIMEO_KEY, VIMEO_SECRET, authorize_params: {scope: "public private purchased create edit delete interact upload"}
     end
 
-You need to replace the VIMEO_KEY and VIMEO_SECRET with your own credentials, you can get them at the Vimeo's developer page as mention above.
+You need to replace the VIMEO_KEY and VIMEO_SECRET with your own credentials, you can get them at the Vimeo's developer page as mentioned above.
 
 Open the following URL and connect your Vimeo account with your application:
 
@@ -44,21 +40,15 @@ Open the following URL and connect your Vimeo account with your application:
 
 ## Supported Rubies
 
-OmniAuth Vimeo is tested under 1.8.7, 1.9.2, 1.9.3 and Ruby Enterprise Edition.
+OmniAuth Vimeo is tested under 1.9.3 and 2.1.2 with Rails 4.1
 
-[![Build Status](https://secure.travis-ci.org/beanieboi/omniauth-vimeo.png?branch=master)](http://travis-ci.org/beanieboi/omniauth-vimeo)
+## TODO
 
-## Note on Patches/Pull Requests
-
-- Fork the project.
-- Make your feature addition or bug fix.
-- Add tests for it. This is important so I don’t break it in a future version unintentionally.
-- Commit, do not mess with rakefile, version, or history. (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-- Send me a pull request. Bonus points for topic branches.
+- Rewrite Spec tests.
 
 ## License
 
-Copyright (c) 2011 Benjamin Fritsch.
+Copyright (c) 2014 Peter Gerard.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
